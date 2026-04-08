@@ -1,4 +1,4 @@
-import {useState, useEffect, useId} from "react";
+import {useState, useEffect} from "react";
 
 // making a personal hook which will contain the json file i fetch using an api to get the relational amount of different currencis
 function usecurrencyInfo(currency){
@@ -18,7 +18,7 @@ function usecurrencyInfo(currency){
                 setData(result[currency]) 
             }
              catch (error) {
-                alert(`ERROR: problem faced during fetching of currecny ${currency}`)
+                alert(`ERROR: problem faced during fetching of currecny ${currency.toUppercase()}`)
                 // setting setData as an empty object so it doesnt crash
                 setData({});
             }
@@ -26,6 +26,7 @@ function usecurrencyInfo(currency){
         fetchData();
 
     } , [currency])
+    // here dependency is currency as reson is obvious
     return data;
     // make sure to return the data for which we created the hook
 
